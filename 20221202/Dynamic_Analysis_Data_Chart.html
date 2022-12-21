@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Analysis Data Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div>
+        <canvas id="totalChart"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById("totalChart");
+
+       let dynamicAnalysisDataChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: [
+                    "00:00 ~ 00:59", "01:00 ~ 01:59", "02:00 ~ 02:59", "03:00 ~ 03:59", 
+                    "04:00 ~ 04:59", "05:00 ~ 05:59", "06:00 ~ 06:59", "07:00 ~ 07:59", 
+                    "08:00 ~ 08:59", "09:00 ~ 09:59", "10:00 ~ 10:59", "11:00 ~ 11:59", 
+                    "12:00 ~ 12:59", "13:00 ~ 13:59", "14:00 ~ 14:59", "15:00 ~ 15:59", 
+                    "16:00 ~ 16:59", "17:00 ~ 17:59", "18:00 ~ 18:59", "19:00 ~ 19:59", 
+                    "20:00 ~ 20:59", "21:00 ~ 21:59", "22:00 ~ 22:59", "23:00 ~ 23:59"
+                ],
+                datasets: [
+                    {
+                        label: "DOC(X)", // 7273
+                        data: [
+                            304, 405, 349, 364,
+                            339, 392, 300, 343,
+                            363, 340, 941, 759,
+                            456, 521, 241, 422,
+                            392, 42, 0, 0,
+                            0, 0, 0, 0
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#295494"
+                    },
+                    {
+                        label: "XLS(X)", // 11704
+                        data: [
+                            674, 643, 662, 638,
+                            672, 795, 726, 721,
+                            609, 612, 18, 1698,
+                            630, 422, 564, 975,
+                            565, 80, 0, 0,
+                            0, 0, 0, 0
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#207044"
+                    },
+                    {
+                        label: "PPT(X)", // 1254
+                        data: [
+                            74, 49, 36, 44,
+                            44, 44, 37, 39,
+                            61, 35, 0, 96,
+                            171, 149, 242, 95,
+                            38, 2, 0, 0,
+                            0, 0, 0, 0
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#B43117"
+                    },
+                    {
+                        label: "HWP(X)", // 6393
+                        data: [
+                            104, 85, 125, 84,
+                            102, 100, 96, 98,
+                            72, 120, 0, 122,
+                            1049, 687, 3004, 218,
+                            174, 153, 0, 0,
+                            0, 0, 0, 0
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#2198D7"
+                    },
+                    {
+                        label: "PDF", //52612
+                        data: [
+                            3862, 3775, 3851, 3747,
+                            3744, 3791, 3826, 3698,
+                            3885, 3730, 214, 3038,
+                            2848, 2459, 2478, 2373,
+                            790, 503, 0, 0,
+                            0, 0, 0, 0
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#FFD700"
+                    },
+                    {
+                        label: "HTML", //23947
+                        data: [
+                            801, 928, 811, 895,
+                            862, 684, 726, 966,
+                            688, 642, 59, 381,
+                            1306, 301, 1209, 11313,
+                            1346, 29, 0, 0,
+                            0, 0, 0, 0
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#DC4A25"
+                    }
+                ]
+            },
+            options: {
+                interaction: {
+                    intersect: false,
+                    mode: "index"
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: "2022-12-02 Dynamic Analysis Data Chart",
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

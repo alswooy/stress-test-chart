@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Analysis Data Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div>
+        <canvas id="totalChart"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById("totalChart");
+
+       let dynamicAnalysisDataChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: [
+                    "00:00 ~ 00:59", "01:00 ~ 01:59", "02:00 ~ 02:59", "03:00 ~ 03:59", 
+                    "04:00 ~ 04:59", "05:00 ~ 05:59", "06:00 ~ 06:59", "07:00 ~ 07:59", 
+                    "08:00 ~ 08:59", "09:00 ~ 09:59", "10:00 ~ 10:59", "11:00 ~ 11:59", 
+                    "12:00 ~ 12:59", "13:00 ~ 13:59", "14:00 ~ 14:59", "15:00 ~ 15:59", 
+                    "16:00 ~ 16:59", "17:00 ~ 17:59", "18:00 ~ 18:59", "19:00 ~ 19:59", 
+                    "20:00 ~ 20:59", "21:00 ~ 21:59", "22:00 ~ 22:59", "23:00 ~ 23:59"
+                ],
+                datasets: [
+                    {
+                        label: "TOTAL", // 180515
+                        data: [
+                            5946, 16177, 4031, 8997,
+                            7738, 7560, 7495, 7763,
+                            7473, 7426, 7534, 7535,
+                            7696, 7631, 7418, 6471,
+                            1155, 10259, 7324, 7765,
+                            8956, 17336, 2828, 1
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#1597BB"
+                    },
+                    {
+                        label: "Dynamic Analysis", // 140409
+                        data: [ 
+                            5257, 13741, 3223, 3565,
+                            6403, 5845, 5783, 6036,
+                            5770, 5780, 5698, 5777,
+                            5974, 5950, 5774, 5044,
+                            575, 8018, 6133, 5644,
+                            6729, 15640, 0, 0
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#207044"
+                    }
+                ]
+            },
+            options: {
+                interaction: {
+                    intersect: false,
+                    mode: "index"
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: "2022-12-06 Stress Test Total Data vs Dynamic Analysis Data Chart",
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

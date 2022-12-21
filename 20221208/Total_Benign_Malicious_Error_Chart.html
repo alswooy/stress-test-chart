@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Data Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div>
+        <canvas id="totalChart"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById("totalChart");
+
+        let chart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: [
+                    "00:00 ~ 00:59", "01:00 ~ 01:59", "02:00 ~ 02:59", "03:00 ~ 03:59", 
+                    "04:00 ~ 04:59", "05:00 ~ 05:59", "06:00 ~ 06:59", "07:00 ~ 07:59", 
+                    "08:00 ~ 08:59", "09:00 ~ 09:59", "10:00 ~ 10:59", "11:00 ~ 11:59", 
+                    "12:00 ~ 12:59", "13:00 ~ 13:59", "14:00 ~ 14:59", "15:00 ~ 15:59", 
+                    "16:00 ~ 16:59", "17:00 ~ 17:59", "18:00 ~ 18:59", "19:00 ~ 19:59", 
+                    "20:00 ~ 20:59", "21:00 ~ 21:59", "22:00 ~ 22:59", "23:00 ~ 23:59"
+                ],
+                datasets: [
+                    {
+                        label: "TOTAL", // 162453
+                        data: [
+                            2102, 1059, 5404, 5691,
+                            15293, 7817, 5944, 8029,
+                            7453, 7414, 7788, 6998,
+                            6801, 4625, 4555, 3711,
+                            1442, 5406, 6858, 14370,
+                            7969, 8807, 8516, 8401
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#1597BB"
+                    },
+                    {
+                        label: "BENIGN", // 152363 (BENIGN + SUSPICIOUS)
+                        data: [
+                            1006, 305, 5060, 5439,
+                            15155, 7016, 4915, 7946,
+                            7361, 7344, 7734, 6932,
+                            6757, 4530, 4080, 2891,
+                            352, 5062, 6598, 14090,
+                            7286, 7779, 8414, 8311
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#42B686"
+                    },
+                    {
+                        label: "MALICIOUS", // 10083
+                        data: [
+                            1096, 754, 344, 252,
+                            136, 801, 1029, 83,
+                            92, 70, 54, 66,
+                            44, 95, 475, 820,
+                            1090, 344, 260, 275,
+                            683, 1028, 102, 90
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#E86F69"
+                    },
+                    {
+                        label: "ERROR", // 7
+                        data: [
+                            0, 0, 0, 0,
+                            2, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 5,
+                            0, 0, 0, 0
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#FFFC03"
+                    }
+                ]
+            },
+            options: {            
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: "index"
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: "2022-12-08 Stress Test Data Chart",
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Analysis Data Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script> -->
+</head>
+<body>
+    <div>
+        <canvas id="dynamicAnalysisChart"></canvas>
+        <canvas id="pieChart" width="1000vh" height="1000vh" style="margin-top: 100px;"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById("dynamicAnalysisChart");
+        
+        let dynamicAnalysisDataChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: [
+                    "00:00 ~ 00:59", "01:00 ~ 01:59", "02:00 ~ 02:59", "03:00 ~ 03:59", 
+                    "04:00 ~ 04:59", "05:00 ~ 05:59", "06:00 ~ 06:59", "07:00 ~ 07:59", 
+                    "08:00 ~ 08:59", "09:00 ~ 09:59", "10:00 ~ 10:59", "11:00 ~ 11:59", 
+                    "12:00 ~ 12:59", "13:00 ~ 13:59", "14:00 ~ 14:59", "15:00 ~ 15:59", 
+                    "16:00 ~ 16:59", "17:00 ~ 17:59", "18:00 ~ 18:59", "19:00 ~ 19:59", 
+                    "20:00 ~ 20:59", "21:00 ~ 21:59", "22:00 ~ 22:59", "23:00 ~ 23:59"
+                ],
+                datasets: [
+                    {
+                        label: "DOC(X)", // 1106
+                        data: [
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 1,
+                            0, 0, 0, 0,
+                            0, 48, 691, 367
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#295494"
+                    },
+                    {
+                        label: "XLS(X)", // 953
+                        data: [
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 1,
+                            0, 0, 0, 0,
+                            0, 10, 203, 740
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#207044"
+                    },
+                    {
+                        label: "PPT(X)", // 77
+                        data: [
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 1,
+                            0, 0, 0, 0,
+                            0, 0, 27, 50
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#B43117"
+                    },
+                    {
+                        label: "HWP(X)", // 232
+                        data: [
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 1,
+                            0, 0, 0, 0,
+                            0, 0, 80, 152
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#2198D7"
+                    },
+                    {
+                        label: "PDF", //2800
+                        data: [
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 1,
+                            0, 0, 0, 0,
+                            0, 4, 1004, 1791
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#FFD700"
+                    },
+                    {
+                        label: "HTML", //849
+                        data: [
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 11, 434, 404
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#DC4A25"
+                    }
+                ]
+            },
+            options: {
+                interaction: {
+                    intersect: false,
+                    mode: "index"
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: "2022-12-07 Dynamic Analysis Data Chart",
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+    <script>
+        const pieChart = document.getElementById("pieChart");
+
+        let dynamicAnalysisDataPieChart = new Chart(pieChart, {
+            type: "pie",
+            data: {
+                labels: ["DOC(X)", "XLS(X)", "PPT(X)", "HWP(X)", "PDF", "HTML"],
+                datasets: [{
+                    label: "Pie Chart",
+                    data: [1106, 953, 77, 232, 2800, 849],
+                    backgroundColor: ["#295494", "#207044", "#B43117", "#2198D7", "#FFD700", "#DC4A25"],
+                    borderColor: "#fff",
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: false,
+                tooltips: {
+                enabled: false
+                },
+                plugins: {
+                    datalabels: {
+                        formatter: (value, pieChart) => {
+                            let sum = 0;
+                            let dataArr = pieChart.chart.data.datasets[0].data;
+                            dataArr.map(data => {
+                                sum += data;
+                            });
+                            let percentage = (value*100 / sum).toFixed(2)+"%";
+                            return percentage;
+                        },
+                        color: '#fff',
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

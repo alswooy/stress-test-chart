@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Data Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div>
+        <canvas id="dynamicAnalysisDataChart"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById("dynamicAnalysisDataChart");
+
+        let chart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: [
+                    "00:00 ~ 00:59", "01:00 ~ 01:59", "02:00 ~ 02:59", "03:00 ~ 03:59", 
+                    "04:00 ~ 04:59", "05:00 ~ 05:59", "06:00 ~ 06:59", "07:00 ~ 07:59", 
+                    "08:00 ~ 08:59", "09:00 ~ 09:59", "10:00 ~ 10:59", "11:00 ~ 11:59", 
+                    "12:00 ~ 12:59", "13:00 ~ 13:59", "14:00 ~ 14:59", "15:00 ~ 15:59", 
+                    "16:00 ~ 16:59", "17:00 ~ 17:59", "18:00 ~ 18:59", "19:00 ~ 19:59", 
+                    "20:00 ~ 20:59", "21:00 ~ 21:59", "22:00 ~ 22:59", "23:00 ~ 23:59"
+                ],
+                datasets: [
+                    {
+                        label: "TOTAL", // 191818
+                        data: [
+                            5131, 4128, 1543, 6957,
+                            8880, 13475, 9880, 9493,
+                            8869, 9001, 9142, 8991,
+                            9077, 8697, 9239, 8812,
+                            7925, 3420, 11414, 7382,
+                            11832, 15059, 3471, 0
+                        ],
+                        yAxixID: "yAxis",
+                        borderWidth: 1,
+                        backgroundColor: "#1597BB"
+                    },
+                    {
+                        label: "BENIGN", // 170347 (BENIGN + SUSPICIOUS)
+                        data: [
+                            4761, 3239, 405, 6586,
+                            8628, 12208, 8577, 9391,
+                            8760, 8920, 9070, 8932,
+                            9003, 8615, 9168, 8716,
+                            6968, 2550, 11094, 6672,
+                            6473, 10651, 960, 0
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#42B686"
+                    },
+                    {
+                        label: "MALICIOUS", // 9856
+                        data: [
+                            370, 889, 1138, 371,
+                            252, 616, 1303, 102,
+                            109, 81, 72, 59,
+                            74, 82, 71, 96,
+                            957, 870, 320, 710,
+                            390, 848, 76, 0
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#E86F69"
+                    },
+                    {
+                        label: "ERROR",
+                        data: [
+                            0, 0, 0, 0,
+                            0, 651, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            4969, 3560, 2435, 0
+                        ],
+                        borderWidth: 1,
+                        backgroundColor: "#FFFC03"
+                    }
+                ]
+            },
+            options: {            
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: "index"
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: "2022-11-28 Stress Test Data Chart",
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
